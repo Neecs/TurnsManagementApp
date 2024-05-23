@@ -32,4 +32,9 @@ public class TurnsController {
     public List<Turn> getTurnsByDependentId(@PathVariable String adminId) {
         return turnService.getTurnsByDependentId(adminId);
     }
+
+    @PostMapping("/update")
+    public void updateTurnAvailability(@RequestBody Turn turnRequest){
+               turnService.updateTurn(turnRequest);
+    }
 }

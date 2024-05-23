@@ -13,4 +13,7 @@ public interface TurnRepo extends MongoRepository<Turn, String>{
 
     @Query("{dependentId: ?0}")
     List<Turn> getTurnsByDependentId(String dependentId);
+
+    @Query("{_id: ?0}")
+    Turn findTurnById(String turnId);
 }

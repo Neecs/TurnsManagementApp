@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TurnService {
@@ -22,5 +23,11 @@ public class TurnService {
 
     public List<Turn> getTurnsByDependentId(String dependentId) {
         return turnRepo.getTurnsByDependentId(dependentId);
+    }
+
+    public void updateTurn(Turn turnRequest){
+        Turn existingTurn = turnRepo.findTurnById(turnRequest.getId());
+        existingTurn.setIsAttended(turnRequest.getIsAttended());
+        turnRepo.save(existingTurn);
     }
 }
