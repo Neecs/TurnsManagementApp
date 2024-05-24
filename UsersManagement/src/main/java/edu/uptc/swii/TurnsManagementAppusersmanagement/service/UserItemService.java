@@ -21,4 +21,7 @@ public class UserItemService {
         return userItemRepo.existsById(userID);
     }
 
+    public String getUserEmailById(String userId){
+        return userItemRepo.findEmailById(userId);
+    }
 }
