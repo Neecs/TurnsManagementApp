@@ -21,6 +21,10 @@ public class TurnService {
         return turnRepo.getTurnsByUserId(userId);
     }
 
+    public List<Turn> getAllTurns(){
+        return turnRepo.findAll();
+    }
+
     public List<Turn> getTurnsByDependentId(String dependentId) {
         return turnRepo.getTurnsByDependentId(dependentId);
     }
