@@ -5,11 +5,13 @@ import edu.uptc.swii.TurnsService.service.TurnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/turns")
 public class TurnsController {
     @Autowired
