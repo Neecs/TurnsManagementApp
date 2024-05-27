@@ -25,6 +25,6 @@ public class EmailSender {
     @KafkaListener(topics = {"User-email-to-be-attended"}, groupId = "groupId")
     public void listener(String userEmail) {
         LOGGER.info("Correo del id de usuario recibido: " + userEmail);
-        emailService.sendEmail(userEmail, "piripiti","hola pana" );
+        emailService.sendEmail(userEmail, "Turno próximo a ser atendido","Tu turno está a 30 minutos o menos de ser atendido" );
     }
 }

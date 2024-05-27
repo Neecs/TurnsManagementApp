@@ -35,8 +35,8 @@ public class TurnsController {
         return turnService.getTurnsByDependentId(adminId);
     }
 
-    @PostMapping("/update")
-    public void updateTurnAvailability(@RequestBody Turn turnRequest){
-               turnService.updateTurn(turnRequest);
+    @PostMapping("/delete")
+    public void deleteTurn(@RequestBody Turn turnRequest) {
+        turnService.deleteTurn(turnRequest);
     }
 }

@@ -32,7 +32,8 @@ public class TurnScheduler {
 
                 long duration = Duration.between(LocalDateTime.now(), turn.getScheduledDate()).toMinutes();
 
-                if (duration > 0 && duration <= 30) {
+                if ((duration > 0 && duration <= 30) && !turn.getIsEmailSended()) {
+                    turnService.updateTurn(turn);
                     kafkaTemplate.send("User-id-to-be-attended", "userId", turn.getUserId());
                 }
             }

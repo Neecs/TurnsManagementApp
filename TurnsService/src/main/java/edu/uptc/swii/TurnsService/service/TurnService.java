@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TurnService {
@@ -31,7 +30,12 @@ public class TurnService {
 
     public void updateTurn(Turn turnRequest){
         Turn existingTurn = turnRepo.findTurnById(turnRequest.getId());
-        existingTurn.setIsAttended(turnRequest.getIsAttended());
+        existingTurn.setIsEmailSended(true);
         turnRepo.save(existingTurn);
+    }
+
+    public void deleteTurn(Turn turnRequest){
+        Turn turnToDelete = turnRepo.findTurnById(turnRequest.getId());
+        turnRepo.delete(turnToDelete);
     }
 }

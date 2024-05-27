@@ -15,9 +15,9 @@ public class Turn {
     private String userId;
     private String dependentId;
     private LocalDateTime scheduledDate;
-    private Boolean emailSended;
+    private Boolean isEmailSended;
 
     public Turn() {
-        this.emailSended = false;
+        this.isEmailSended = false;
     }
 }
