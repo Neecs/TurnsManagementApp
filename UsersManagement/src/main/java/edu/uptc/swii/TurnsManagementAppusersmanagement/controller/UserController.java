@@ -53,13 +53,13 @@ public class UserController {
         return ResponseEntity.ok(keycloakService.findUsers());
     }
 
-    @GetMapping("/getUserOrganizationDependents")
-    public List<UserItem> userOrganizationAdmins(@RequestBody UserIdRequest userIdRequest){
-        return userItemService.getAdminsByOrganization(userIdRequest.getUserId());
+    @GetMapping("/getOrganizationDependants/{userId}")
+    public List<UserItem> userOrganizationAdmins(@PathVariable String userId){
+        return userItemService.getAdminsByOrganization(userId);
     }
 
-    @GetMapping("/getUserOrganizationClients")
-    public List<UserItem> userOrganizationClients(@RequestBody UserIdRequest userIdRequest){
-        return userItemService.getUsersByOrganization(userIdRequest.getUserId());
+    @GetMapping("/getOrganizationClients/{userId}")
+    public List<UserItem> userOrganizationClients(@PathVariable String userId){
+        return userItemService.getUsersByOrganization(userId);
     }
 }
