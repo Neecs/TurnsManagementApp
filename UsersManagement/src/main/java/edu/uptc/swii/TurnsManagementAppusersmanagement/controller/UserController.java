@@ -57,4 +57,9 @@ public class UserController {
     public List<UserItem> userOrganizationAdmins(@RequestBody UserIdRequest userIdRequest){
         return userItemService.getAdminsByOrganization(userIdRequest.getUserId());
     }
+
+    @GetMapping("/getUserOrganizationClients")
+    public List<UserItem> userOrganizationClients(@RequestBody UserIdRequest userIdRequest){
+        return userItemService.getUsersByOrganization(userIdRequest.getUserId());
+    }
 }

@@ -53,7 +53,25 @@ public class UserItemService {
         }
 
         return organizationAdmins;
+    }
 
+    public List<UserItem> getUsersByOrganization(String userId) {
+        String organization = userItemRepo.getUserOrganization(userId);
+        List<UserRepresentation> allUsers = keycloakService.findUsers();
+        List<UserItem> organizationUsers = userItemRepo.getUsersByOrganization(organization);
+        List<UserItem> organizationUsersRole= new ArrayList<>();
+        List<String> allUsersId = new ArrayList<>();
 
+        for(UserRepresentation user: allUsers){
+            allUsersId.add(user.getId());
+        }
+
+        for (UserItem organizationUser: organizationUsers){
+            if(allUsersId.contains(organizationUser.getId())){
+                organizationUsersRole.add(organizationUser);
+            }
+        }
+
+        return organizationUsersRole;
     }
 }
