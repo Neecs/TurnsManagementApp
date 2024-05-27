@@ -16,4 +16,8 @@ public class Turn {
     private String dependentId;
     private LocalDateTime scheduledDate;
     private Boolean isAttended;
+
+    public Turn() {
+        this.isAttended = false;
+    }
 }

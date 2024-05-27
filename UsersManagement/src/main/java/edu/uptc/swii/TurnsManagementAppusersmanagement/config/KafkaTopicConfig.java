@@ -1,4 +1,4 @@
-package edu.uptc.swii.TurnsService.config;
+package edu.uptc.swii.TurnsManagementAppusersmanagement.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.config.TopicConfig;
@@ -24,7 +24,7 @@ public class KafkaTopicConfig {
         configurations.put(TopicConfig.SEGMENT_BYTES_CONFIG, "1073741824");
         configurations.put(TopicConfig.MAX_MESSAGE_BYTES_CONFIG, "1000012");
 
-        return TopicBuilder.name("User-id-to-be-attended")
+        return TopicBuilder.name("User-email-to-be-attended")
                 .partitions(2)
                 .replicas(1)
                 .configs(configurations)

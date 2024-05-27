@@ -17,9 +17,9 @@ public class KafkaCostumerListener {
     private final Logger LOGGER = LoggerFactory.getLogger(KafkaCostumerListener.class);
 
 
-    @KafkaListener(topics = {"Turns-attended-soon-topic"}, groupId = "groupId")
-    public void listener(String message){
-        LOGGER.info("Mensaje recibido: " + message);
-        System.out.println(userItemService.getUserEmailById("9244e329-8737-4a91-9ec3-7fc52e7a2680"));
+    @KafkaListener(topics = {"User-id-to-be-attended"}, groupId = "groupId")
+    public void listener(String userId){
+        LOGGER.info("Correo del id de usuario recibido: " + userId);
+        System.out.println(userItemService.getUserEmailById("578a536a-995d-4858-b711-fdb9d719f0be"));
     }
 }

@@ -25,18 +25,18 @@ public class TurnScheduler {
         List<Turn> allTurns = turnService.getAllTurns();
 
 
-        for (Turn turn : allTurns) {
-
-            if (turn.getScheduledDate() != null) {
-
-
-                long duration = Duration.between(turn.getScheduledDate(), LocalDateTime.now()).toMinutes();
-
-                if (duration > 0 && duration <= 30) {
-                    kafkaTemplate.send("Turns-attended-soon-topic", "userId", turn.getUserId());
-                }
-            }
-        }
+//        for (Turn turn : allTurns) {
+//
+//            if (turn.getScheduledDate() != null) {
+//
+//
+//                long duration = Duration.between(turn.getScheduledDate(), LocalDateTime.now()).toMinutes();
+//
+//                if (duration > 0 && duration <= 30) {
+                    kafkaTemplate.send("User-id-to-be-attended", "userId", "piripiti");
+//                }
+//            }
+//        }
 
 
     }
