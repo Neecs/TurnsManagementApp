@@ -23,20 +23,20 @@ public class TurnScheduler {
     @Scheduled(cron = "*/30 * * * * * ")
     public void findNextTurn() {
         List<Turn> allTurns = turnService.getAllTurns();
+        LocalDateTime actualTime = LocalDateTime.now();
+
+        for (Turn turn : allTurns) {
+
+            if (turn.getScheduledDate() != null) {
 
 
-//        for (Turn turn : allTurns) {
-//
-//            if (turn.getScheduledDate() != null) {
-//
-//
-//                long duration = Duration.between(turn.getScheduledDate(), LocalDateTime.now()).toMinutes();
-//
-//                if (duration > 0 && duration <= 30) {
-                    kafkaTemplate.send("User-id-to-be-attended", "userId", "piripiti");
-//                }
-//            }
-//        }
+                long duration = Duration.between(LocalDateTime.now(), turn.getScheduledDate()).toMinutes();
+
+                if (duration > 0 && duration <= 30) {
+                    kafkaTemplate.send("User-id-to-be-attended", "userId", turn.getUserId());
+                }
+            }
+        }
 
 
     }

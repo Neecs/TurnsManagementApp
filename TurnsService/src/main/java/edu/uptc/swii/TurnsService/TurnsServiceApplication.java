@@ -17,7 +17,7 @@ public class TurnsServiceApplication {
 	@PostConstruct
 	public void init(){
 		// Setting Spring Boot SetTimeZone
-		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+		TimeZone.setDefault(TimeZone.getTimeZone("GMT-5"));
 	}
 
 }

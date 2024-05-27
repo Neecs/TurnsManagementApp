@@ -10,4 +10,5 @@ public class TurnsManagementAppUsersManagementApplication {
 		SpringApplication.run(TurnsManagementAppUsersManagementApplication.class, args);
 	}
 
+
 }
