@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -45,5 +46,15 @@ public class UserController {
     public boolean checkUserStorage(@RequestBody UserIdRequest userIdRequest) {
         String userId = userIdRequest.getUserId();
         return userItemService.checkUserExistenceInDb(userId);
+    }
+
+    @GetMapping("/getUsersRole")
+    public ResponseEntity<?> findUsers(){
+        return ResponseEntity.ok(keycloakService.findUsers());
+    }
+
+    @GetMapping("/getUserOrganizationDependents")
+    public List<UserItem> userOrganizationAdmins(@RequestBody UserIdRequest userIdRequest){
+        return userItemService.getAdminsByOrganization(userIdRequest.getUserId());
     }
 }

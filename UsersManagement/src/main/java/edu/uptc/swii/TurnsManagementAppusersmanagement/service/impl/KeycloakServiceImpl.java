@@ -20,7 +20,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class KeycloakServiceImpl implements IKeycloakService{
+public class KeycloakServiceImpl implements IKeycloakService {
     @Autowired
     UserItemService userItemService;
 
@@ -30,6 +30,7 @@ public class KeycloakServiceImpl implements IKeycloakService{
                 .users()
                 .list();
     }
+
 
     @Override
     public List<UserRepresentation> searchUserByUsername(String username) {
@@ -101,6 +102,23 @@ public class KeycloakServiceImpl implements IKeycloakService{
     @Override
     public void updateUser(String userId, UserDTO userDTO) {
 
+    }
+
+    @Override
+    public List<UserRepresentation> findUsers() {
+
+        return KeycloakProvider.getRealmResource()
+                .roles()
+                .get("user")
+                .getUserMembers();
+    }
+
+    @Override
+    public List<UserRepresentation> findAdmins() {
+        return KeycloakProvider.getRealmResource()
+                .roles()
+                .get("admin")
+                .getUserMembers();
     }
 
 }
