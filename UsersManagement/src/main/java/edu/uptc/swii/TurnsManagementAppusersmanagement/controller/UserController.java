@@ -90,7 +90,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Success", content = {@Content(mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", description = "Server Error", content = @Content)
     })
-    @GetMapping("/getUserOrganizationDependents")
+    @GetMapping("/getOrganizationDependants")
     public List<UserItem> userOrganizationAdmins(@RequestBody UserIdRequest userIdRequest) {
         return userItemService.getAdminsByOrganization(userIdRequest.getUserId());
     }
@@ -100,7 +100,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Success", content = {@Content(mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", description = "Server Error", content = @Content)
     })
-    @GetMapping("/getUserOrganizationClients")
+    @GetMapping("/getOrganizationClients")
     public List<UserItem> userOrganizationClients(@RequestBody UserIdRequest userIdRequest) {
         return userItemService.getUsersByOrganization(userIdRequest.getUserId());
     }
