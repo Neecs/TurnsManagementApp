@@ -5,6 +5,11 @@ import edu.uptc.swii.TurnsManagementAppusersmanagement.model.UserDTO;
 import edu.uptc.swii.TurnsManagementAppusersmanagement.model.UserIdRequest;
 import edu.uptc.swii.TurnsManagementAppusersmanagement.service.IKeycloakService;
 import edu.uptc.swii.TurnsManagementAppusersmanagement.service.UserItemService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +30,12 @@ public class UserController {
     private UserItemService userItemService;
 
 
+    @Operation(summary = "Department Details",  description = "Retrieves the details of a Department by DepartmentID",
+            security = @SecurityRequirement(name = "security_auth"))
+    @ApiResponses({
+            @ApiResponse(responseCode="200", description ="Success", content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "500", description = "Server Error")
+    })
     @GetMapping("/allUsers")
     public ResponseEntity<?> findAllUsers() {
         return ResponseEntity.ok(keycloakService.findAllUsers());
