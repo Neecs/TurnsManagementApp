@@ -104,3 +104,4 @@ public class UserController {
     public List<UserItem> userOrganizationClients(@RequestBody UserIdRequest userIdRequest) {
         return userItemService.getUsersByOrganization(userIdRequest.getUserId());
     }
+}
