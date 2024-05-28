@@ -81,7 +81,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Server Error", content = @Content)
     })
     @GetMapping("/getUsersRole")
-    public ResponseEntity<?> findUsers(){
+    public ResponseEntity<?> findUsers() {
         return ResponseEntity.ok(keycloakService.findUsers());
     }
 
@@ -91,7 +91,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Server Error", content = @Content)
     })
     @GetMapping("/getUserOrganizationDependents")
-    public List<UserItem> userOrganizationAdmins(@RequestBody UserIdRequest userIdRequest){
+    public List<UserItem> userOrganizationAdmins(@RequestBody UserIdRequest userIdRequest) {
         return userItemService.getAdminsByOrganization(userIdRequest.getUserId());
     }
 
@@ -101,7 +101,6 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Server Error", content = @Content)
     })
     @GetMapping("/getUserOrganizationClients")
-    public List<UserItem> userOrganizationClients(@RequestBody UserIdRequest userIdRequest){
+    public List<UserItem> userOrganizationClients(@RequestBody UserIdRequest userIdRequest) {
         return userItemService.getUsersByOrganization(userIdRequest.getUserId());
     }
-}
